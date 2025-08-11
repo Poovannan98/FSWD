@@ -1,0 +1,18 @@
+.App {
+  font-family: sans-serif;
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+input {
+  margin-right: 1rem;
+}
+
+button {
+  margin: 0.2rem;
+}
+
+.filters {
+  margin: 1rem 0;
+}
