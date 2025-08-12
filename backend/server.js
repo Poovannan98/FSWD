@@ -1,3 +1,4 @@
+   require('dotenv').config();
    const express = require('express');
    const mongoose = require('mongoose');
    const cors = require('cors');
@@ -8,7 +9,7 @@
    app.use(cors());
    app.use(express.json());
 
-   mongoose.connect(`mongodb+srv://poovannan:admin@cluster0.ffqsbny.mongodb.net/Sample?retryWrites=true&w=majority&appName=Cluster0`, { useNewUrlParser: true, useUnifiedTopology: true });
+   mongoose.connect(process.env.MONGO_URI);
 
    const UserSchema = new mongoose.Schema({
        email: { type: String, required: true, unique: true },
