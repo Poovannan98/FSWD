@@ -8,7 +8,7 @@ function Register({ onSwitch }) {
   const submit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/register', { username, password });
+      await axios.post('http://localhost:5000/api/register', { username, password });
       alert('Registered successfully');
       onSwitch();
     } catch (err) {

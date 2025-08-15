@@ -6,7 +6,7 @@ function TodoList({ token, onLogout }) {
   const [text, setText] = useState('');
 
   const fetchTodos = React.useCallback(async () => {
-    const res = await axios.get('http://localhost:5000/todos', {
+    const res = await axios.get('http://localhost:5000/api/todos/', {
       headers: { Authorization: `Bearer ${token}` }
     });
     setTodos(res.data);
@@ -14,7 +14,7 @@ function TodoList({ token, onLogout }) {
 
   const addTodo = async () => {
     if (!text.trim()) return;
-    const res = await axios.post('http://localhost:5000/todos', { text, completed: false }, {
+    const res = await axios.post('http://localhost:5000/api/todos/', { text, completed: false }, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setTodos([...todos, res.data]);
@@ -22,14 +22,14 @@ function TodoList({ token, onLogout }) {
   };
 
   const toggleTodo = async (id, completed) => {
-    const res = await axios.put(`http://localhost:5000/todos/${id}`, { completed: !completed }, {
+    const res = await axios.put(`http://localhost:5000/api/todos/${id}`, { completed: !completed }, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setTodos(todos.map(todo => todo._id === id ? res.data : todo));
   };
 
   const deleteTodo = async (id) => {
-    await axios.delete(`http://localhost:5000/todos/${id}`, {
+    await axios.delete(`http://localhost:5000/api/todos/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setTodos(todos.filter(todo => todo._id !== id));
